@@ -1,4 +1,5 @@
 import streamlit as st
+import nltk
 from newspaper import Article
 
 st.set_page_config(page_title="Media Numbers Co.",
@@ -6,6 +7,7 @@ st.set_page_config(page_title="Media Numbers Co.",
                    layout="centered",
                    initial_sidebar_state="expanded")
 
+nltk.download('punkt')
 
 def main():
     st.title("Media Numbers Co.")
