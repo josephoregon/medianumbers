@@ -11,7 +11,7 @@ nltk.download('punkt')
 
 def main():
     st.title("medianumbers")
-    st.markdown("[_Creator: JosephOregon, Data Scientist_](https://gab.com/josephoregon)")
+    st.markdown("_Creator: [JosephOregon, Data Scientist_](https://www.linkedin.com/in/josephrosas/)")
 
     st.markdown("---")
     
