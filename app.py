@@ -12,7 +12,8 @@ nltk.download('punkt')
 def main():
     st.title("Media Numbers Co.")
     st.markdown("Creator: Joseph Rosas, Data Scientist")
-
+    st.sidebar.markdown("---")
+    
     default_text = st.text_input("Enter URL")
 
     if not default_text:
