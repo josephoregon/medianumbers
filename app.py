@@ -11,7 +11,8 @@ nltk.download('punkt')
 
 def main():
     st.title("medianumbers")
-    st.markdown("_Creator: JosephOregon, Data Scientist_")
+    st.markdown("[_Creator: JosephOregon, Data Scientist_](https://gab.com/josephoregon)")
+
     st.markdown("---")
     
     default_text = st.text_input("Enter URL")
