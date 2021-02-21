@@ -11,7 +11,7 @@ nltk.download('punkt')
 
 def main():
     st.title("medianumbers")
-    st.subheader("keeping the media honest and fair")
+    st.markdown("keeping the media honest and fair")
     st.markdown("_Creator: JosephOregon, Data Scientist_")
     st.markdown("---")
     
