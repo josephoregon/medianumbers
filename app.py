@@ -10,8 +10,8 @@ st.set_page_config(page_title="Media Numbers Co.",
 nltk.download('punkt')
 
 def main():
-    st.title("medianumbers co.")
-    st.markdown("Creator: Joseph Rosas, Data Scientist")
+    st.title("medianumbers")
+    st.markdown("Creator: JosephOregon, Data Scientist")
     st.markdown("---")
     
     default_text = st.text_input("Enter URL")
