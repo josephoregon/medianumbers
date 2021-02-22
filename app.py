@@ -1,52 +1,57 @@
-import streamlit as st
+import re
 import nltk
 from newspaper import Article
+import streamlit as st
 
-st.set_page_config(page_title="Media Numbers Co.",
-                   page_icon="🗽",
-                   layout="centered",
-                   initial_sidebar_state="expanded")
+title = st.title("medianumbers")
+st.markdown("[_by JosephOregon, Data Scientist_](https://www.linkedin.com/in/josephrosas/)")
+st.markdown("---")
 
-nltk.download('punkt')
+default_text = st.text_input("Enter URL")
 
-def main():
-    st.title("medianumbers")
-    st.markdown("[_JosephOregon, Data Scientist_](https://www.linkedin.com/in/josephrosas/)")
+if not default_text:
 
-    st.markdown("---")
-    
-    default_text = st.text_input("Enter URL")
+    default_text = 'You will see a summary of the article entered.'
 
-    if not default_text:
-        st.write('')
-        return
-
+else:
     article = Article(default_text)
+    nltk.download('punkt')
     article.download()
     article.parse()
     article.nlp()
 
-    st.write(article.title)  # + ' ' + str(article.publish_date.strftime('(%m-%d-%Y)'))
+    article_title = article.title
 
-    st.write('')
+    bullet_1 = str(article.summary.split('\n')[0])
+    bullet_2 = str(article.summary.split('\n')[1])
+    bullet_3 = str(article.summary.split('\n')[2])
+    bullet_4 = str(article.summary.split('\n')[3])
+    bullet_5 = str(article.summary.split('\n')[4])
 
-    for n in range(0, 5):
-        bullet = "• " + str(article.summary.split('\n')[n])
-        st.write(bullet)
-        st.write('')
+    source_url = article.url
 
-    st.write('#{} #{} #{} #{} #{} #{}'.format(
-        str(article.keywords[0]),
-        str(article.keywords[1]),
-        str(article.keywords[2]),
-        str(article.keywords[3]),
-        str(article.keywords[4]),
-        str(article.keywords[5]),
-    ))
+    default_text = '''
+    
+{}
 
-    st.write('')
-    st.write('{}'.format(article.url))
+• {}
 
+• {}
 
-if __name__ == "__main__":
-    main()
+• {}
+
+• {}
+
+• {}
+
+{}
+    
+    '''.format(article_title, bullet_1, bullet_2, bullet_3, bullet_4, bullet_5, source_url)
+
+    default_text = re.sub('[*{}]', '', default_text)
+    default_text = default_text.replace('according to the report.', '')
+    default_text = default_text.replace('”', '"')
+    default_text = default_text.replace(',"', '"')
+
+with st.spinner("Formatting code ..."):
+    st.code(default_text, language='html')
