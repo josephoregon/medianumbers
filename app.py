@@ -3,8 +3,17 @@ import nltk
 from newspaper import Article
 import streamlit as st
 
+st.set_page_config(
+    page_title='medianumbers',
+    page_icon='🗞'
+)
+
 title = st.title("medianumbers")
-st.markdown("[_by JosephOregon, Data Scientist_](https://www.linkedin.com/in/josephrosas/)")
+st.markdown("[_by JosephOregon, Data Scientist_]"
+            "(https://www.linkedin.com/in/josephrosas/)")
+st.markdown("---")
+st.markdown("Get only the important stuff from "
+            "news articles and format them into bullet points!")
 st.markdown("---")
 
 default_text = st.text_input("Enter URL")
