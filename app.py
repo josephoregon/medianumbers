@@ -65,8 +65,18 @@ else:
         via_source = 'The Right Scoop'
     elif 'thepoliticalinsider' in source_url:
         via_source = 'The Political Insider'
+    elif 'protrumpnews' in source_url:
+        via_source = 'ProTrumpNews'
     elif 'waynedupree' in source_url:
         via_source = '@WayneDupreeShow'
+    elif 'thepalmierireport' in source_url:
+        via_source = '@Thepalmierireport'
+    elif 'conservativebrief' in source_url:
+        via_source = '@ConservativeBrief'
+    elif 'trendingpolitics' in source_url:
+        via_source = 'Trending Politics'
+    elif 'westernjournal' in source_url:
+        via_source = 'The Western Journal'
     else:
         via_source = 'JosephOregon'
 
