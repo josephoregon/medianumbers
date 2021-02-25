@@ -39,7 +39,40 @@ else:
 
     source_url = article.url
 
+    if 'newsmax' in source_url:
+        via_source = 'Newsmax'
+    elif 'oann' in source_url:
+        via_source = 'OAN'
+    elif 'redstate' in source_url:
+        via_source = 'RedState'
+    elif 'thegatewaypundit' in source_url:
+        via_source = '@GatewayPundit'
+    elif 'theepochtimes' in source_url:
+        via_source = '@TheEpochTimes'
+    elif 'newsbusters' in source_url:
+        via_source = 'NewsBusters'
+    elif 'nationalreview' in source_url:
+        via_source = 'National Review Online'
+    elif 'nationalfile' in source_url:
+        via_source = 'NationalFile'
+    elif 'pjmedia' in source_url:
+        via_source = '@PJMedia'
+    elif 'foxnews' in source_url:
+        via_source = 'Fox News'
+    elif 'thefederalist' in source_url:
+        via_source = 'The Federalist'
+    elif 'therightscoop' in source_url:
+        via_source = 'The Right Scoop'
+    elif 'thepoliticalinsider' in source_url:
+        via_source = 'The Political Insider'
+    elif 'waynedupree' in source_url:
+        via_source = '@WayneDupreeShow'
+    else:
+        via_source = 'JosephOregon'
+
     default_text = '''
+
+via {}
     
 {}
 
@@ -55,7 +88,7 @@ else:
 
 {}
     
-    '''.format(article_title, bullet_1, bullet_2, bullet_3, bullet_4, bullet_5, source_url)
+    '''.format(via_source, article_title, bullet_1, bullet_2, bullet_3, bullet_4, bullet_5, source_url)
 
     default_text = re.sub('[*{}]', '', default_text)
     default_text = default_text.replace('according to the report.', '')
