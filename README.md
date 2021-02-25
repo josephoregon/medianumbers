@@ -1,6 +1,6 @@
 ## Welcome to MediaNumbers
 
-You can use the [editor on GitHub](https://github.com/josephoregon/medianumbers/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
+You can use [this article summary tool](https://share.streamlit.io/josephoregon/medianumbers/main/app.py) to quickly read key points about the article.
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
