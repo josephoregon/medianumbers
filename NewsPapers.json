@@ -1,0 +1,40 @@
+{
+  "TheEpochTimes": {
+      "rss": "https://www.theepochtimes.com/c-us/feed",
+    "link": "https://www.theepochtimes.com/"
+  },
+  "TheBlaze": {
+      "rss": "https://www.theblaze.com/feeds/feed.rss",
+    "link": "https://www.theblaze.com/"
+  },
+  "TheGatewayPundit": {
+      "rss": "https://www.thegatewaypundit.com/feed/",
+    "link": "https://www.thegatewaypundit.com/"
+  },
+  "CNN": {
+      "rss": "http://rss.cnn.com/rss/cnn_allpolitics.rss",
+    "link": "https://cnn.com"
+  },
+  "Newsmax": {
+      "rss": "https://www.newsmax.com/rss/Politics/1",
+    "link": "https://www.newsmax.com/"
+  },
+  "TheNewYorkTimes": {
+      "rss": "https://rss.nytimes.com/services/xml/rss/nyt/Politics.xml",
+    "link": "nytimes.com/section/politics"
+  },
+  "DailyKos": {
+      "rss": "http://www.dailykos.com/blogs/main.rss",
+    "link": "https://www.dailykos.com/"
+  },
+  "RedditPolitics": {
+      "rss": "https://www.reddit.com/r/politics/.rss",
+    "link": "https://www.reddit.com/r/politics/"
+  },
+  "MichelleMalkin": {
+      "rss": "http://michellemalkin.com/feed/",
+    "link": "https://www.unz.com/author/michelle-malkin/"
+  }
+}
+
+
