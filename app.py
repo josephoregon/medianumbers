@@ -8,15 +8,17 @@ st.set_page_config(
     page_icon='🗞'
 )
 
-title = st.title("medianumbers")
+title = st.title("Media-Numbers")
 st.markdown("[_by JosephOregon, Data Scientist_]"
             "(https://www.linkedin.com/in/josephrosas/)")
 st.markdown("---")
-st.markdown("Get only the important stuff from "
-            "news articles and format them into bullet points!")
+st.markdown("Do you want to summarize an article? Get only the "
+            "important stuff from news articles and format them"
+            " into bullet points! I will continue to make changes,"
+            "as far as enhancements and repairs.")
 st.markdown("---")
 
-default_text = st.text_input("Enter URL")
+default_text = st.text_input("Enter Article's URL")
 
 if not default_text:
 
@@ -40,7 +42,7 @@ else:
     source_url = article.url
 
     if 'newsmax' in source_url:
-        via_source = 'Newsmax'
+        via_source = '@NewsmaxLive'
     elif 'oann' in source_url:
         via_source = 'OAN'
     elif 'redstate' in source_url:
@@ -54,7 +56,7 @@ else:
     elif 'nationalreview' in source_url:
         via_source = 'National Review Online'
     elif 'nationalfile' in source_url:
-        via_source = 'NationalFile'
+        via_source = '@NationalFile'
     elif 'pjmedia' in source_url:
         via_source = '@PJMedia'
     elif 'foxnews' in source_url:
@@ -62,11 +64,11 @@ else:
     elif 'thefederalist' in source_url:
         via_source = 'The Federalist'
     elif 'therightscoop' in source_url:
-        via_source = 'The Right Scoop'
+        via_source = '@TheRightScoop'
     elif 'thepoliticalinsider' in source_url:
         via_source = 'The Political Insider'
     elif 'protrumpnews' in source_url:
-        via_source = 'ProTrumpNews'
+        via_source = '@ProTrumpNews'
     elif 'waynedupree' in source_url:
         via_source = '@WayneDupreeShow'
     elif 'thepalmierireport' in source_url:
@@ -77,33 +79,61 @@ else:
         via_source = 'Trending Politics'
     elif 'westernjournal' in source_url:
         via_source = 'The Western Journal'
+    elif '100percentfedup' in source_url:
+        via_source = '@100percentfedup'
     else:
-        via_source = 'JosephOregon'
+        via_source = ''
+
+    # Removing Square Brackets and Extra Spaces
+    article_text = re.sub(r'\[[0-9]*\]', ' ', default_text)
+    article_text = re.sub(r'\s+', ' ', article_text)
+
+    # Removing special characters and digits
+    formatted_article_text = re.sub('[^a-zA-Z]', ' ', article_text)
+    formatted_article_text = re.sub(r'\s+', ' ', formatted_article_text)
+
+    sentence_list = nltk.sent_tokenize(article_text)
+    stopwords = nltk.corpus.stopwords.words('english')
+
+    word_frequencies = {}
+    for word in nltk.word_tokenize(formatted_article_text):
+        if len(word) > 4:
+            if word not in stopwords:
+                if word not in word_frequencies.keys():
+                    word_frequencies[word] = 1
+                else:
+                    word_frequencies[word] += 1
+
+    sorted_values = sorted(word_frequencies.values(), reverse=True)  # Sort the values
+    sorted_dict = {}
+
+    for i in sorted_values:
+        for k in word_frequencies.keys():
+            if word_frequencies[k] == i:
+                sorted_dict[k] = word_frequencies[k]
+                break
+
+    sorted_list = list(sorted_dict.keys())
 
     default_text = '''
-
 via {}
-    
-{}
-
-• {}
-
-• {}
-
-• {}
-
-• {}
-
-• {}
 
 {}
-    
-    '''.format(via_source, article_title, bullet_1, bullet_2, bullet_3, bullet_4, bullet_5, source_url)
 
-    default_text = re.sub('[*{}]', '', default_text)
-    default_text = default_text.replace('according to the report.', '')
-    default_text = default_text.replace('”', '"')
-    default_text = default_text.replace(',"', '"')
+• {}
 
-with st.spinner("Formatting code ..."):
-    st.code(default_text, language='html')
+• {}
+
+• {}
+
+• {}
+
+• {}
+
+{}
+
+        '''.format(via_source, article_title, bullet_1, bullet_2,
+                   bullet_3, bullet_4, bullet_5, source_url)
+
+    with st.spinner("Formatting code ..."):
+        st.code(default_text, language='html')
