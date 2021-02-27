@@ -46,29 +46,29 @@ else:
     if 'newsmax' in source_url:
         via_source = '@NewsmaxLive'
     elif 'oann' in source_url:
-        via_source = 'OAN'
+        via_source = '#OAN'
     elif 'redstate' in source_url:
-        via_source = 'RedState'
+        via_source = '#RedState'
     elif 'thegatewaypundit' in source_url:
         via_source = '@GatewayPundit'
     elif 'theepochtimes' in source_url:
         via_source = '@TheEpochTimes'
     elif 'newsbusters' in source_url:
-        via_source = 'NewsBusters'
+        via_source = '#NewsBusters'
     elif 'nationalreview' in source_url:
-        via_source = 'National Review Online'
+        via_source = '#NationalReviewOnline'
     elif 'nationalfile' in source_url:
         via_source = '@NationalFile'
     elif 'pjmedia' in source_url:
         via_source = '@PJMedia'
     elif 'foxnews' in source_url:
-        via_source = 'Fox News'
+        via_source = '#FoxNews'
     elif 'thefederalist' in source_url:
-        via_source = 'The Federalist'
+        via_source = '#TheFederalist'
     elif 'therightscoop' in source_url:
         via_source = '@TheRightScoop'
     elif 'thepoliticalinsider' in source_url:
-        via_source = 'The Political Insider'
+        via_source = '#ThePoliticalInsider'
     elif 'protrumpnews' in source_url:
         via_source = '@ProTrumpNews'
     elif 'waynedupree' in source_url:
@@ -78,9 +78,9 @@ else:
     elif 'conservativebrief' in source_url:
         via_source = '@ConservativeBrief'
     elif 'trendingpolitics' in source_url:
-        via_source = 'Trending Politics'
+        via_source = '#TrendingPolitics'
     elif 'westernjournal' in source_url:
-        via_source = 'The Western Journal'
+        via_source = '#TheWesternJournal'
     elif '100percentfedup' in source_url:
         via_source = '@100percentfedup'
     else:
