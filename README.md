@@ -1,8 +1,8 @@
 ## Welcome to MediaNumbers
 
-You can use [this article summary tool](https://share.streamlit.io/josephoregon/medianumbers/main/app.py) to quickly read key points about the article.
+I am a Data Scientist who wants to share my talents through small means.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+- **[Article Summary Tool]**(https://share.streamlit.io/josephoregon/medianumbers/main/app.py)
 
 ### Markdown
 
