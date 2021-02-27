@@ -8,6 +8,8 @@ st.set_page_config(
     page_icon='🗞'
 )
 
+nltk.download('stopwords')
+
 title = st.title("Media-Numbers")
 st.markdown("[_by JosephOregon, Data Scientist_]"
             "(https://www.linkedin.com/in/josephrosas/)")
