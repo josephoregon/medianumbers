@@ -45,49 +45,6 @@ if default_text:
 
     source_url = article.url
 
-    if 'newsmax' in source_url:
-        via_source = '@NewsmaxLive'
-    elif 'oann' in source_url:
-        via_source = '#OAN'
-    elif 'redstate' in source_url:
-        via_source = '#RedState'
-    elif 'thegatewaypundit' in source_url:
-        via_source = '@GatewayPundit'
-    elif 'theepochtimes' in source_url:
-        via_source = '@TheEpochTimes'
-    elif 'newsbusters' in source_url:
-        via_source = '#NewsBusters'
-    elif 'nationalreview' in source_url:
-        via_source = '#NationalReviewOnline'
-    elif 'nationalfile' in source_url:
-        via_source = '@NationalFile'
-    elif 'pjmedia' in source_url:
-        via_source = '@PJMedia'
-    elif 'foxnews' in source_url:
-        via_source = '#FoxNews'
-    elif 'thefederalist' in source_url:
-        via_source = '#TheFederalist'
-    elif 'therightscoop' in source_url:
-        via_source = '@TheRightScoop'
-    elif 'thepoliticalinsider' in source_url:
-        via_source = '#ThePoliticalInsider'
-    elif 'protrumpnews' in source_url:
-        via_source = '@ProTrumpNews'
-    elif 'waynedupree' in source_url:
-        via_source = '@WayneDupreeShow'
-    elif 'thepalmierireport' in source_url:
-        via_source = '@Thepalmierireport'
-    elif 'conservativebrief' in source_url:
-        via_source = '@ConservativeBrief'
-    elif 'trendingpolitics' in source_url:
-        via_source = '#TrendingPolitics'
-    elif 'westernjournal' in source_url:
-        via_source = '#TheWesternJournal'
-    elif '100percentfedup' in source_url:
-        via_source = '@100percentfedup'
-    else:
-        via_source = ''
-
     # Removing Square Brackets and Extra Spaces
     article_text = re.sub(r'\[[0-9]*\]', ' ', default_text)
     article_text = re.sub(r'\s+', ' ', article_text)
@@ -120,8 +77,6 @@ if default_text:
     sorted_list = list(sorted_dict.keys())
 
     default_text = '''
-via {}
-
 {}
 
 • {}
@@ -136,7 +91,7 @@ via {}
 
 {}
 
-        '''.format(via_source, article_title, bullet_1, bullet_2,
+        '''.format(article_title, bullet_1, bullet_2,
                    bullet_3, bullet_4, bullet_5, source_url)
 
     with st.spinner("Formatting code ..."):
