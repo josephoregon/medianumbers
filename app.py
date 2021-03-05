@@ -79,20 +79,12 @@ if default_text:
     default_text = '''
 {}
 
-• {}
-
-• {}
-
-• {}
-
-• {}
-
-• {}
+↓
+↓
 
 {}
 
-        '''.format(article_title, bullet_1, bullet_2,
-                   bullet_3, bullet_4, bullet_5, source_url)
+        '''.format(article_title, source_url)
 
     with st.spinner("Formatting code ..."):
         st.code(default_text, language='html')
