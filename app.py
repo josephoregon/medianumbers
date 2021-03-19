@@ -1,13 +1,12 @@
-import streamlit as st
-
-import re
-import nltk
 import heapq
+import re
+
+import nltk
+import streamlit as st
 from newspaper import Article
 
-
 st.set_page_config(
-    page_title='medianumbers',
+    page_title='News Analytics',
     page_icon='🗞'
 )
 
