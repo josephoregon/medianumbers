@@ -191,19 +191,19 @@ else:
 
         if 'BREAKING' in article_title:
             default_text = '''
-    🚨 {}
+🚨 {}
 
-    🔑 SUMMARY: {}
+🔑 SUMMARY: {}
 
-    🔗 {}
+🔗 {}
                 '''.format(article_title, summary, source_url)
         else:
             default_text = '''
-    📰 {}
+📰 {}
 
-    🔑 SUMMARY: {}
+🔑 SUMMARY: {}
 
-    🔗 {}
+🔗 {}
                 '''.format(article_title, summary, source_url)
 
         with st.spinner("Formatting code ..."):
