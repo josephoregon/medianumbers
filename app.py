@@ -119,91 +119,91 @@ if st.button('Use Clipboard Text'):
     with st.spinner("Formatting code ..."):
         st.code(default_text, language='html')
 
-else:
-    default_text = st.text_input("Paste News Article URL")
 
-    if default_text:
+default_text = st.text_input("Paste News Article URL")
 
-        article = Article(default_text)
+if default_text:
 
-        nltk.download('punkt')
+    article = Article(default_text)
 
-        article.download()
-        article.parse()
-        article.nlp()
+    nltk.download('punkt')
 
-        article_title = article.title
+    article.download()
+    article.parse()
+    article.nlp()
 
-        source_url = article.url
+    article_title = article.title
 
-        article_summary = article.summary
+    source_url = article.url
 
-        # Removing Square Brackets and Extra Spaces
-        article_text = re.sub(r'\[[0-9]*\]', ' ', article_summary)
-        article_text = re.sub(r'\s+', ' ', article_text)
+    article_summary = article.summary
 
-        # Removing special characters and digits
-        formatted_article_text = re.sub('[^a-zA-Z]', ' ', article_text)
-        formatted_article_text = re.sub(r'\s+', ' ', formatted_article_text)
+    # Removing Square Brackets and Extra Spaces
+    article_text = re.sub(r'\[[0-9]*\]', ' ', article_summary)
+    article_text = re.sub(r'\s+', ' ', article_text)
 
-        sentence_list = nltk.sent_tokenize(article_text)
-        stopwords = nltk.corpus.stopwords.words('english')
+    # Removing special characters and digits
+    formatted_article_text = re.sub('[^a-zA-Z]', ' ', article_text)
+    formatted_article_text = re.sub(r'\s+', ' ', formatted_article_text)
 
-        word_frequencies = {}
-        for word in nltk.word_tokenize(formatted_article_text):
-            if len(word) > 4:
-                if word not in stopwords:
-                    if word not in word_frequencies.keys():
-                        word_frequencies[word] = 1
+    sentence_list = nltk.sent_tokenize(article_text)
+    stopwords = nltk.corpus.stopwords.words('english')
+
+    word_frequencies = {}
+    for word in nltk.word_tokenize(formatted_article_text):
+        if len(word) > 4:
+            if word not in stopwords:
+                if word not in word_frequencies.keys():
+                    word_frequencies[word] = 1
+                else:
+                    word_frequencies[word] += 1
+
+    sorted_values = sorted(word_frequencies.values(), reverse=True)  # Sort the values
+    sorted_dict = {}
+
+    for i in sorted_values:
+        for k in word_frequencies.keys():
+            if word_frequencies[k] == i:
+                sorted_dict[k] = word_frequencies[k]
+                break
+
+    sorted_list = list(sorted_dict.keys())
+
+    maximum_freq = max(word_frequencies.values())
+
+    for word in word_frequencies.keys():
+        word_frequencies[word] = (word_frequencies[word] / maximum_freq)
+
+    sentence_scores = {}
+    for sent in sentence_list:
+        for word in nltk.word_tokenize(sent.lower()):
+            if word in word_frequencies.keys():
+                if len(sent.split(' ')) < 30:
+                    if sent not in sentence_scores.keys():
+                        sentence_scores[sent] = word_frequencies[word]
                     else:
-                        word_frequencies[word] += 1
+                        sentence_scores[sent] += word_frequencies[word]
 
-        sorted_values = sorted(word_frequencies.values(), reverse=True)  # Sort the values
-        sorted_dict = {}
+    summary_sentences = heapq.nlargest(7, sentence_scores, key=sentence_scores.get)
 
-        for i in sorted_values:
-            for k in word_frequencies.keys():
-                if word_frequencies[k] == i:
-                    sorted_dict[k] = word_frequencies[k]
-                    break
+    summary = ' '.join(summary_sentences)
 
-        sorted_list = list(sorted_dict.keys())
+    if 'BREAKING' in article_title:
+        default_text = '''
+🚨 {}
 
-        maximum_freq = max(word_frequencies.values())
+🔑 SUMMARY: {}
 
-        for word in word_frequencies.keys():
-            word_frequencies[word] = (word_frequencies[word] / maximum_freq)
+🔗 {}
+            '''.format(article_title, summary, source_url)
+    else:
+        default_text = '''
+📰 {}
 
-        sentence_scores = {}
-        for sent in sentence_list:
-            for word in nltk.word_tokenize(sent.lower()):
-                if word in word_frequencies.keys():
-                    if len(sent.split(' ')) < 30:
-                        if sent not in sentence_scores.keys():
-                            sentence_scores[sent] = word_frequencies[word]
-                        else:
-                            sentence_scores[sent] += word_frequencies[word]
+🔑 SUMMARY: {}
 
-        summary_sentences = heapq.nlargest(7, sentence_scores, key=sentence_scores.get)
+🔗 {}
+            '''.format(article_title, summary, source_url)
 
-        summary = ' '.join(summary_sentences)
-
-        if 'BREAKING' in article_title:
-            default_text = '''
-    🚨 {}
-    
-    🔑 SUMMARY: {}
-    
-    🔗 {}
-                '''.format(article_title, summary, source_url)
-        else:
-            default_text = '''
-    📰 {}
-    
-    🔑 SUMMARY: {}
-    
-    🔗 {}
-                '''.format(article_title, summary, source_url)
-
-        with st.spinner("Formatting code ..."):
-            st.code(default_text, language='html')
+    with st.spinner("Formatting code ..."):
+        st.code(default_text, language='html')
