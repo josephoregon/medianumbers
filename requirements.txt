@@ -10,3 +10,4 @@ black==20.8b1
 pyperclip==1.8.2
 PyQt4==4.11.4
 PyGTK==2.24.2
+pyp3rclip==1.8.0

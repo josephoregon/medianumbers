@@ -4,7 +4,7 @@ import pyperclip
 import heapq
 import nltk
 import re
-
+import pyp3rclip
 from newspaper import Article
 
 st.set_page_config(
@@ -26,7 +26,7 @@ sentence_length = st.select_slider('Summary Length (Sentence Count)', options=[1
 # Create a button, that when clicked, shows a text
 if st.button('Use Clipboard Text'):
     # get the clipboard
-    url = pyperclip.paste()
+    url = pyp3rclip.paste()
 else:
     url = st.text_input("Paste Article URL Below")
 
@@ -111,7 +111,7 @@ if url != '':
 🔗 {}
                 '''.format(article_title, summary, tags, source_url)
 
-    pyperclip.copy(default_text)
+    pyp3rclip.copy(default_text)
     st.success('Text Copied To Clipboard!')
 
     with st.spinner("Formatting code ..."):
