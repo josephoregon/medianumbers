@@ -21,6 +21,8 @@ st.markdown("---")
 nltk.download('punkt')
 nltk.download('stopwords')
 
+sentence_length = st.select_slider('Summary Length (Sentence Count)', options=[1, 2, 3, 4, 5])
+
 # Create a button, that when clicked, shows a text
 if st.button('Use Clipboard Text'):
     # get the clipboard
@@ -29,40 +31,29 @@ else:
     url = st.text_input("Paste Article URL Below")
 
 if url != '':
-    # Pull Article Information
     article = Article(url)
     article.download()
     article.parse()
     article.nlp()
 
     article_title = article.title
-
     source_url = article.url
-
-    article_summary = article.summary
-
-    # Removing Square Brackets and Extra Spaces
-    article_text = re.sub(r'\[[0-9]*\]', ' ', article_summary)
-    article_text = re.sub(r'\s+', ' ', article_text)
-
-    # Removing special characters and digits
-    formatted_article_text = re.sub('[^a-zA-Z]', ' ', article_text)
-    formatted_article_text = re.sub(r'\s+', ' ', formatted_article_text)
-
-    sentence_list = nltk.sent_tokenize(article_text)
+    article_text = article.text
+    article_text_formatted = re.sub(r'\s+', ' ', article_text)
+    sentence_list = nltk.sent_tokenize(article_text_formatted)
     stopwords = nltk.corpus.stopwords.words('english')
 
     word_frequencies = {}
-
-    for word in nltk.word_tokenize(formatted_article_text):
-        if len(word) > 4:
+    for word in nltk.word_tokenize(article_text_formatted):
+        if len(word) >= 5:
             if word not in stopwords:
                 if word not in word_frequencies.keys():
                     word_frequencies[word] = 1
                 else:
                     word_frequencies[word] += 1
 
-    sorted_values = sorted(word_frequencies.values(), reverse=True)  # Sort the values
+    sorted_values = sorted(word_frequencies.values(),
+                           reverse=True)  # Sort the values
     sorted_dict = {}
 
     for i in sorted_values:
@@ -79,6 +70,7 @@ if url != '':
         word_frequencies[word] = (word_frequencies[word] / maximum_freq)
 
     sentence_scores = {}
+
     for sent in sentence_list:
         for word in nltk.word_tokenize(sent.lower()):
             if word in word_frequencies.keys():
@@ -88,9 +80,15 @@ if url != '':
                     else:
                         sentence_scores[sent] += word_frequencies[word]
 
-    summary_sentences = heapq.nlargest(7, sentence_scores, key=sentence_scores.get)
-
+    summary_sentences = heapq.nlargest(sentence_length, sentence_scores, key=sentence_scores.get)
     summary = ' '.join(summary_sentences)
+
+    tag_list = []
+    for w in sorted_list:
+        w = w.capitalize()
+        tag = ' #' + w
+        tag_list.append('{}'.format(tag))
+    tags = ''.join(tag_list)
 
     if 'BREAKING' in article_title:
         default_text = '''
@@ -98,16 +96,23 @@ if url != '':
 
 🔑 SUMMARY: {}
 
+{}
+
 🔗 {}
-                '''.format(article_title, summary, source_url)
+                '''.format(article_title, summary, tags, source_url)
     else:
         default_text = '''
 📰 {}
 
 🔑 SUMMARY: {}
 
+{}
+
 🔗 {}
-                '''.format(article_title, summary, source_url)
+                '''.format(article_title, summary, tags, source_url)
+
+    pyperclip.copy(default_text)
+    st.success('Text Copied To Clipboard!')
 
     with st.spinner("Formatting code ..."):
         st.code(default_text, language='html')

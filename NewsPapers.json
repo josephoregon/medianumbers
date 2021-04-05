@@ -1,0 +1,61 @@
+{
+  "cnn": {
+    "rss": "http://rss.cnn.com/rss/cnn_topstories.rss",
+    "link": "http://www.cnn.com/"
+  },
+  "nyt": {
+    "rss": "http://rss.nytimes.com/services/xml/rss/nyt/Politics.xml",
+    "link": "http://www.nytimes.com/section/politics"
+  },
+  "politicus_usa": {
+    "rss": "http://www.politicususa.com/feed",
+    "link": "http://www.politicususa.com/"
+  },
+  "fox": {
+    "rss": "http://feeds.foxnews.com/foxnews/politics",
+    "link": "http://www.foxnews.com/"
+  },
+  "epoch": {
+    "rss": "http://www.theepochtimes.com/c-us/feed",
+    "link": "http://www.theepochtimes.com/"
+  },
+  "blaze": {
+    "rss": "http://www.theblaze.com/feeds/feed.rss",
+    "link": "http://www.theblaze.com/"
+  },
+  "tgp": {
+    "rss": "http://trendingpolitics.com/feed/",
+    "link": "http://trendingpolitics.com/"
+  },
+  "trend": {
+    "rss": "http://www.thegatewaypundit.com/feed/",
+    "link": "http://www.thegatewaypundit.com/"
+  },
+  "cdm": {
+    "link": "http://creativedestructionmedia.com/"
+  },
+  "fte": {
+    "rss": "http://fivethirtyeight.com/politics/feed/",
+    "link": "http://fivethirtyeight.com/"
+  },
+  "wayne": {
+    "rss": "http://www.waynedupree.com/feed/",
+    "link": "http://www.waynedupree.com/"
+  },
+  "tnr": {
+    "rss": "http://www.nationalreview.com/corner/feed/",
+    "link": "http://www.nationalreview.com/"
+  },
+  "trs": {
+    "rss": "http://therightscoop.com/feed/",
+    "link": "http://therightscoop.com/"
+  },
+  "rds": {
+    "rss": "http://www.redstate.com/feed/",
+    "link": "http://www.redstate.com/"
+  },
+  "hotair": {
+    "rss": "http://hotair.com/feed",
+    "link": "http://hotair.com/"
+  }
+}
