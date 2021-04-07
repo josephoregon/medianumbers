@@ -110,7 +110,7 @@ if url != '':
 🔗 {}
                 '''.format(article_title, summary, tags, source_url)
 
-    pyperclip.copy(default_text)
+    #pyperclip.copy(default_text)
     st.success('Text Copied To Clipboard!')
 
     with st.spinner("Formatting code ..."):
