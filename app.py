@@ -27,8 +27,9 @@ sentence_length = st.select_slider('Summary Length (Sentence Count)', options=[1
 #if st.button('Use Clipboard Text'):
     # get the clipboard
     #url = pyperclip.paste()
-else:
-    url = st.text_input("Paste Article URL Below")
+#else:
+
+url = st.text_input("Paste Article URL Below")
 
 if url != '':
     article = Article(url)
