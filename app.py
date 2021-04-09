@@ -1,7 +1,7 @@
 # Import Packages
 
 import streamlit as st
-#import pyperclip
+# import pyperclip
 import heapq
 import nltk
 import re
@@ -21,13 +21,13 @@ st.markdown("---")
 nltk.download('punkt')
 nltk.download('stopwords')
 
-sentence_length = st.select_slider('Summary Length (Sentence Count)', options=[1, 2, 3, 4, 5])
+sentence_length = 2  # = st.radio('Summary Length (Sentence Count)', options=[1, 2, 3, 4, 5])
 
 # Create a button, that when clicked, shows a text
-#if st.button('Use Clipboard Text'):
-    # get the clipboard
-    #url = pyperclip.paste()
-#else:
+# if st.button('Use Clipboard Text'):
+# get the clipboard
+# url = pyperclip.paste()
+# else:
 
 url = st.text_input("Paste Article URL Below")
 
@@ -112,7 +112,7 @@ if url != '':
 🔗 {}
                 '''.format(article_title, summary, tags, source_url)
 
-    #pyperclip.copy(default_text)
+    # pyperclip.copy(default_text)
     st.success('Text Copied To Clipboard!')
 
     with st.spinner("Formatting code ..."):
