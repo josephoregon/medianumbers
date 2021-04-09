@@ -1,9 +1,7 @@
 # Import Packages
 
-# streamlit run app.py
-
 import streamlit as st
-import pyperclip
+#import pyperclip
 import heapq
 import nltk
 import re
@@ -26,9 +24,9 @@ nltk.download('stopwords')
 sentence_length = st.select_slider('Summary Length (Sentence Count)', options=[1, 2, 3, 4, 5])
 
 # Create a button, that when clicked, shows a text
-if st.button('Use Clipboard Text'):
+#if st.button('Use Clipboard Text'):
     # get the clipboard
-    url = pyperclip.paste()
+    #url = pyperclip.paste()
 else:
     url = st.text_input("Paste Article URL Below")
 
