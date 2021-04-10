@@ -8,7 +8,7 @@ import re
 from newspaper import Article
 
 st.set_page_config(
-    page_title='Media Analytics',
+    page_title='News Analytics',
     page_icon='📰'
 )
 title = st.title("MEDIA NUMBERS")
@@ -21,13 +21,21 @@ st.markdown("---")
 nltk.download('punkt')
 nltk.download('stopwords')
 
-sentence_length = 2  # = st.radio('Summary Length (Sentence Count)', options=[1, 2, 3, 4, 5])
-
-# Create a button, that when clicked, shows a text
-# if st.button('Use Clipboard Text'):
-# get the clipboard
-# url = pyperclip.paste()
-# else:
+st.write('Summary Sentence Count:')
+sentence_length = 2
+col1, col2, col3, col4, col5, col6 = st.beta_columns(6, )
+if col1.button('ONE'):
+    sentence_length = 1
+if col2.button('TWO'):
+    sentence_length = 2
+if col3.button('THREE'):
+    sentence_length = 3
+if col4.button('FOUR'):
+    sentence_length = 4
+if col5.button('FIVE'):
+    sentence_length = 5
+if col6.button('SIX'):
+    sentence_length = 6
 
 url = st.text_input("Paste Article URL Below")
 
@@ -85,6 +93,7 @@ if url != '':
     summary = ' '.join(summary_sentences)
 
     tag_list = []
+
     for w in sorted_list:
         w = w.capitalize()
         tag = ' #' + w
@@ -111,9 +120,6 @@ if url != '':
 
 🔗 {}
                 '''.format(article_title, summary, tags, source_url)
-
-    # pyperclip.copy(default_text)
-    st.success('Text Copied To Clipboard!')
 
     with st.spinner("Formatting code ..."):
         st.code(default_text, language='html')
