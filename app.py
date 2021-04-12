@@ -21,21 +21,7 @@ st.markdown("---")
 nltk.download('punkt')
 nltk.download('stopwords')
 
-st.write('Summary Sentence Count:')
-sentence_length = 2
-col1, col2, col3, col4, col5, col6 = st.beta_columns(6, )
-if col1.button('ONE'):
-    sentence_length = 1
-if col2.button('TWO'):
-    sentence_length = 2
-if col3.button('THREE'):
-    sentence_length = 3
-if col4.button('FOUR'):
-    sentence_length = 4
-if col5.button('FIVE'):
-    sentence_length = 5
-if col6.button('SIX'):
-    sentence_length = 6
+sentence_length = st.multiselect('Summary Sentence Count:', [1, 2, 3, 4, 5, 6])
 
 url = st.text_input("Paste Article URL Below")
 
