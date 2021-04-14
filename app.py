@@ -1,7 +1,12 @@
-# Import Packages
+"""
 
+Author: Joseph Rosas, Data Scientist
+Email: josephoregon@icloud.com
+Create Date: Feb. 21st 2021
+Last Update: April 14th 2021
+
+"""
 import streamlit as st
-# import pyperclip
 import heapq
 import nltk
 import re
@@ -21,7 +26,11 @@ st.markdown("---")
 nltk.download('punkt')
 nltk.download('stopwords')
 
+
 sentence_length = st.multiselect('Summary Sentence Count:', [1, 2, 3, 4, 5, 6])
+
+if sentence_length != '':
+    sentence_length = 1
 
 url = st.text_input("Paste Article URL Below")
 
@@ -39,6 +48,7 @@ if url != '':
     stopwords = nltk.corpus.stopwords.words('english')
 
     word_frequencies = {}
+
     for word in nltk.word_tokenize(article_text_formatted):
         if len(word) >= 5:
             if word not in stopwords:
