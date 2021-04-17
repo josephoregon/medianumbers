@@ -1,10 +1,6 @@
 """
-
-Author: Joseph Rosas, Data Scientist
-Email: josephoregon@icloud.com
+@Author: Joseph Rosas
 Create Date: Feb. 21st 2021
-Last Update: April 14th 2021
-
 """
 import streamlit as st
 import heapq
@@ -16,7 +12,8 @@ st.set_page_config(
     page_title='News Analytics',
     page_icon='📰'
 )
-title = st.title("MEDIA NUMBERS")
+
+st.title("MEDIA NUMBERS")
 
 st.markdown("[_by Joseph Rosas, Data Scientist_]"
             "(https://www.linkedin.com/in/josephrosas/)")
