@@ -94,6 +94,7 @@ if url != '':
 
     if 'BREAKING' in article_title:
         default_text = '''
+————
 🚨 {}
 
 🔑 SUMMARY: {}
@@ -104,6 +105,7 @@ if url != '':
                 '''.format(article_title, summary, tags, source_url)
     else:
         default_text = '''
+————
 📰 {}
 
 🔑 SUMMARY: {}
