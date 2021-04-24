@@ -94,25 +94,25 @@ if url != '':
 
     if 'BREAKING' in article_title:
         default_text = '''
-————
-🚨 {}
+┈┈┈┈┈┈┈
+🚨 ➟ {}
 
-🔑 SUMMARY: {}
+🔑 ➟ {}
 
 {}
 
-🔗 {}
+🔗 ➟ {}
                 '''.format(article_title, summary, tags, source_url)
     else:
         default_text = '''
-————
-📰 {}
+┈┈┈┈┈┈┈
+📰 ➟ {}
 
-🔑 SUMMARY: {}
+🔑 ➟ {}
 
 {}
 
-🔗 {}
+🔗 ➟ {}
                 '''.format(article_title, summary, tags, source_url)
 
     with st.spinner("Formatting code ..."):
