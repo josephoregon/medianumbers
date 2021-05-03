@@ -22,7 +22,7 @@ st.markdown("---")
 nltk.download('punkt')
 nltk.download('stopwords')
 
-sentence_length = st.multiselect('Summary Sentence Count:', [1, 2, 3, 4, 5, 6])
+sentence_length = st.selectbox('Summary Sentence Count:', [1, 2, 3, 4, 5, 6])
 
 if sentence_length != '':
     sentence_length = 1
