@@ -24,9 +24,6 @@ nltk.download('stopwords')
 
 sentence_length = st.selectbox('Summary Sentence Count:', [1, 2, 3, 4, 5, 6])
 
-if sentence_length != '':
-    sentence_length = 1
-
 url = st.text_input("Paste Article URL Below")
 
 if url != '':
