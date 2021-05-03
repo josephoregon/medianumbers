@@ -22,7 +22,6 @@ st.markdown("---")
 nltk.download('punkt')
 nltk.download('stopwords')
 
-
 sentence_length = st.multiselect('Summary Sentence Count:', [1, 2, 3, 4, 5, 6])
 
 if sentence_length != '':
@@ -94,26 +93,31 @@ if url != '':
 
     if 'BREAKING' in article_title:
         default_text = '''
-┈┈┈┈┈┈┈
-🚨 ➟ {}
 
-🔑 ➟ {}
-
+𝐇𝔼𝔸𝔻𝕃𝕀ℕ𝔼 🎙
+﹉﹉﹉﹉﹉﹉﹉
 {}
 
-🔗 ➟ {}
-                '''.format(article_title, summary, tags, source_url)
+𝐒𝕌𝕄𝕄𝔸ℝ𝕐  ❝❞
+{}
+
+𝐓𝔸𝔾𝕊 🏷
+{}
+
+𝐒𝕆𝕌ℝ𝐂𝔼 ↴
+{}
+                                        '''.format(article_title, summary, tags, source_url)
     else:
         default_text = '''
-┈┈┈┈┈┈┈
-📰 ➟ {}
-
-🔑 ➟ {}
-
+𝙃𝙀𝘼𝘿𝙇𝙄𝙉𝙀  🎙
 {}
 
-🔗 ➟ {}
-                '''.format(article_title, summary, tags, source_url)
+𝙎𝙐𝙈𝙈𝘼𝙍𝙔  ❝❞
+{}
+
+𝙎𝙊𝙐𝙍𝘾𝙀  ↴
+{}
+                                '''.format(article_title, summary, source_url)
 
     with st.spinner("Formatting code ..."):
         st.code(default_text, language='html')
