@@ -93,20 +93,15 @@ if url != '':
 
     if 'BREAKING' in article_title:
         default_text = '''
-
-𝐇𝔼𝔸𝔻𝕃𝕀ℕ𝔼 🎙
-﹉﹉﹉﹉﹉﹉﹉
+𝘽𝙍𝙀𝘼𝙆𝙄𝙉𝙂 𝙃𝙀𝘼𝘿𝙇𝙄𝙉𝙀 🚨
 {}
 
-𝐒𝕌𝕄𝕄𝔸ℝ𝕐  ❝❞
+𝙎𝙐𝙈𝙈𝘼𝙍𝙔  ❝❞
 {}
 
-𝐓𝔸𝔾𝕊 🏷
+𝙎𝙊𝙐𝙍𝘾𝙀  ↴
 {}
-
-𝐒𝕆𝕌ℝ𝐂𝔼 ↴
-{}
-                                        '''.format(article_title, summary, tags, source_url)
+                                        '''.format(article_title, summary, source_url)
     else:
         default_text = '''
 𝙃𝙀𝘼𝘿𝙇𝙄𝙉𝙀  🎙
