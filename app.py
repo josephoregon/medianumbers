@@ -22,7 +22,7 @@ st.markdown("---")
 nltk.download('punkt')
 nltk.download('stopwords')
 
-sentence_length = st.selectbox('Summary Sentence Count:', [1, 2, 3, 4, 5, 6], 2)
+sentence_length = st.selectbox('Summary Sentence Count:', [1, 2, 3, 4, 5, 6], 1)
 
 url = st.text_input("Paste Article URL Below")
 
